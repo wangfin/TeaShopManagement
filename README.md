@@ -39,7 +39,7 @@ django的urls、views、models、template、static file基本上都是按照了�
 
 整个首页都是以图片墙的形式展现的奶茶的图片，如下：
 
-![首页](https://note.youdao.com/favicon.ico)
+![首页](https://github.com/wangfin/TeaShopManagement/raw/master/pic/首页.png)
 
 首页以后可以再进行改进，增加功能！！！
 
@@ -51,17 +51,17 @@ django的urls、views、models、template、static file基本上都是按照了�
 
 页面如下：
 
-![采购单创建](https://note.youdao.com/favicon.ico)
+![采购单创建](https://github.com/wangfin/TeaShopManagement/raw/master/pic/采购单创建.png)
 
-![表格](https://note.youdao.com/favicon.ico)
+![表格](https://github.com/wangfin/TeaShopManagement/raw/master/pic/可修改表格.png)
 
 采购单查看页面就是普通的数据表格Datatable，最后一排的左边的按钮可以查看采购单的详细内容，第二个按钮可以进行订单的删除（在仓库确认收货之后不可以删除订单）
 
 页面如下：
 
-![采购单查看页面](https://note.youdao.com/favicon.ico)
+![采购单查看页面](https://github.com/wangfin/TeaShopManagement/raw/master/pic/采购单查看.png)
 
-![采购单详细信息页面](https://note.youdao.com/favicon.ico)
+![采购单详细信息页面](https://github.com/wangfin/TeaShopManagement/raw/master/pic/采购详细信息.png)
 
 #### 仓库
 
@@ -71,15 +71,15 @@ django的urls、views、models、template、static file基本上都是按照了�
 
 页面如下：
 
-![仓库确认到货](https://note.youdao.com/favicon.ico)
+![仓库确认到货](https://github.com/wangfin/TeaShopManagement/raw/master/pic/仓库确认订单.png)
 
 仓库查看物品的数量等信息，也可以查看某个物品的具体进货出货信息
 
 页面如下：
 
-![仓库物品查看](https://note.youdao.com/favicon.ico)
+![仓库物品查看](https://github.com/wangfin/TeaShopManagement/raw/master/pic/仓库物品查看.png)
 
-![物品详细进出](https://note.youdao.com/favicon.ico)
+![物品详细进出](https://github.com/wangfin/TeaShopManagement/raw/master/pic/仓库物品详细进出查看.png)
 
 #### 销售部
 
@@ -89,15 +89,16 @@ django的urls、views、models、template、static file基本上都是按照了�
 
 页面如下：
 
-![订单创建](https://note.youdao.com/favicon.ico)
 
-![选择奶茶](https://note.youdao.com/favicon.ico)
+![订单创建](https://github.com/wangfin/TeaShopManagement/raw/master/pic/订单创建.png)
+
+![选择奶茶](https://github.com/wangfin/TeaShopManagement/raw/master/pic/添加奶茶.png)
 
 查看销售记录就是查看销售的信息，同采购部相同，也可以查看具体的某一个销售信息。
 
 页面如下
 
-![订单查看](https://note.youdao.com/favicon.ico)
+![订单查看](https://github.com/wangfin/TeaShopManagement/raw/master/pic/销售单查看.png)
 
 #### 财务部
 
@@ -105,7 +106,7 @@ django的urls、views、models、template、static file基本上都是按照了�
 
 页面如下：
 
-![财务部页面](https://note.youdao.com/favicon.ico)
+![财务部页面](https://github.com/wangfin/TeaShopManagement/raw/master/pic/财务部的进出项查看.png)
 
 
 #### 人事部
@@ -115,14 +116,14 @@ django的urls、views、models、template、static file基本上都是按照了�
 
 #### 登陆
 
-![登陆](https://note.youdao.com/favicon.ico)
+![登陆](https://github.com/wangfin/TeaShopManagement/raw/master/pic/登陆.png)
 
 
 #### sweet alert
 
 本项目所有的alert，都是用的这种alert，很好看。
 
-![sweet alert](https://note.youdao.com/favicon.ico)
+![sweet alert](https://github.com/wangfin/TeaShopManagement/raw/master/pic/sweetalert.png)
 
 
 ### 未上线功能
