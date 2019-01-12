@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <link rel="shortcut icon" href="{% static 'teamanagement/images/favicon.ico' %}">
+
+        <title>首页</title>
+
+        <!--Morris Chart CSS -->
+		<link rel="stylesheet" href="{% static 'teamanagement/plugins/morris/morris.css' %}">
+
+        <!-- App css -->
+        <link href="{% static 'teamanagement/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/core.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/components.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/icons.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/pages.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/menu.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/responsive.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="{% static 'teamanagement/js/modernizr.min.js' %}"></script>
+
+        <!-- Sweet Alert css -->
+        <link href="{% static 'teamanagement/plugins/bootstrap-sweetalert/sweet-alert.css' %}" rel="stylesheet" type="text/css" />
+
+
+    </head>
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <a href="/tea/index" class="logo"><span>超级<span>奶爸</span></span><i class="zmdi zmdi-layers"></i></a>
+                </div>
+
+                <!-- Button mobile view to collapse sidebar menu -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+
+                        <!-- Page title -->
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <button class="button-menu-mobile open-left">
+                                    <i class="zmdi zmdi-menu"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <h4 class="page-title">管理系统</h4>
+                            </li>
+                        </ul>
+
+                        <!-- Right(Notification and Searchbox -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <!-- Notification -->
+                                <div class="notification-box">
+                                    <ul class="list-inline m-b-0">
+                                        <li>
+                                            <a href="javascript:void(0);" class="right-bar-toggle">
+                                                <i class="zmdi zmdi-notifications-none"></i>
+                                            </a>
+                                            <div class="noti-dot">
+                                                <span class="dot"></span>
+                                                <span class="pulse"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- End Notification bar -->
+                            </li>
+                            <li class="hidden-xs">
+                                <form role="search" class="app-search">
+                                    <input type="text" placeholder="在这里搜索..."
+                                           class="form-control">
+                                    <a href=""><i class="fa fa-search"></i></a>
+                                </form>
+                            </li>
+                        </ul>
+
+                    </div><!-- end container -->
+                </div><!-- end navbar -->
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+
+                    <!-- User -->
+                    <div class="user-box">
+                        <div class="user-img">
+                            <img src="{% static 'teamanagement/images/users/administrator.png' %}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                            <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
+                        </div>
+                        <h5><a href="#">{{ request.session.identity }}</a> </h5>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#" >
+                                    <i class="zmdi zmdi-settings"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="text-custom" data-toggle="modal" data-target="#log_out">
+                                    <i class="zmdi zmdi-power"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End User -->
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <ul>
+                        	<li class="text-muted menu-title">菜单栏</li>
+
+                            <li>
+                                <a href="/tea/index" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> 首页 </span> </a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-assignment-o"></i><span> 采购部 </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" style="">
+                                    <li><a href="/tea/purchase_create">采购单创建</a></li>
+                                    <li><a href="/tea/purchase_show">采购单查看</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-case-check"></i><span> 仓库管理 </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" style="">
+                                    <li><a href="/tea/warehouse_confirm">仓库确认订单</a></li>
+                                    <li><a href="/tea/warehouse_goodscheck">仓库物品查看</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-mall"></i><span> 销售部 </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" style="">
+                                    <li><a href="/tea/sales_create">销售单创建</a></li>
+                                    <li><a href="/tea/sales_show">销售单查看</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="/tea/finance_show" class="waves-effect"><i class="zmdi zmdi-money-box"></i> <span> 财务部 </span> </a>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="clearfix"></div>
+
+                </div>
+
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
+
+
+                        <!--<div class="row">-->
+
+                            <!--<div class="col-lg-3 col-md-6">-->
+                        		<!--<div class="card-box">-->
+
+                        			<!--<h4 class="header-title m-t-0 m-b-30">本月总销售额</h4>-->
+
+                                    <!--<div class="widget-chart-1">-->
+                                        <!--<div class="widget-chart-box-1">-->
+                                            <!--<input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050 "-->
+                                               <!--data-bgColor="#F9B9B9" value="58"-->
+                                               <!--data-skin="tron" data-angleOffset="180" data-readOnly=true-->
+                                               <!--data-thickness=".15"/>-->
+                                        <!--</div>-->
+
+                                        <!--<div class="widget-detail-1">-->
+                                            <!--<h2 class="p-t-10 m-b-0"> 256 </h2>-->
+                                            <!--<p class="text-muted">今日销售额</p>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                        		<!--</div>-->
+                            <!--</div>&lt;!&ndash; end col &ndash;&gt;-->
+
+                            <!--<div class="col-lg-3 col-md-6">-->
+                        		<!--<div class="card-box">-->
+
+                        			<!--<h4 class="header-title m-t-0 m-b-30">同比上个月的销售额</h4>-->
+
+                                    <!--<div class="widget-box-2">-->
+                                        <!--<div class="widget-detail-2">-->
+                                            <!--<span class="badge badge-success pull-left m-t-20">32% <i class="zmdi zmdi-trending-up"></i> </span>-->
+                                            <!--<h2 class="m-b-0"> 8451 </h2>-->
+                                            <!--<p class="text-muted m-b-25">本月目前销售额</p>-->
+                                        <!--</div>-->
+                                        <!--<div class="progress progress-bar-success-alt progress-sm m-b-0">-->
+                                            <!--<div class="progress-bar progress-bar-success" role="progressbar"-->
+                                                 <!--aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"-->
+                                                 <!--style="width: 77%;">-->
+                                                <!--<span class="sr-only">50% Complete</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                        		<!--</div>-->
+                            <!--</div>&lt;!&ndash; end col &ndash;&gt;-->
+
+                            <!--<div class="col-lg-3 col-md-6">-->
+                        		<!--<div class="card-box">-->
+
+                        			<!--<h4 class="header-title m-t-0 m-b-30">会员总数</h4>-->
+
+                                    <!--<div class="widget-chart-1">-->
+                                        <!--<div class="widget-chart-box-1">-->
+                                            <!--<input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#ffbd4a"-->
+                                               <!--data-bgColor="#FFE6BA" value="80"-->
+                                               <!--data-skin="tron" data-angleOffset="180" data-readOnly=true-->
+                                               <!--data-thickness=".15"/>-->
+                                        <!--</div>-->
+                                        <!--<div class="widget-detail-1">-->
+                                            <!--<h2 class="p-t-10 m-b-0"> 1 </h2>-->
+                                            <!--<p class="text-muted">今日新增会员数</p>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                        		<!--</div>-->
+                            <!--</div>&lt;!&ndash; end col &ndash;&gt;-->
+
+                            <!--<div class="col-lg-3 col-md-6">-->
+                        		<!--<div class="card-box">-->
+
+                        			<!--<h4 class="header-title m-t-0 m-b-30">本年度已支出</h4>-->
+
+                                    <!--<div class="widget-box-2">-->
+                                        <!--<div class="widget-detail-2">-->
+                                            <!--<span class="badge badge-pink pull-left m-t-20">32% <i class="zmdi zmdi-trending-up"></i> </span>-->
+                                            <!--<h2 class="m-b-0"> 158 </h2>-->
+                                            <!--<p class="text-muted m-b-25">本月已支出</p>-->
+                                        <!--</div>-->
+                                        <!--<div class="progress progress-bar-pink-alt progress-sm m-b-0">-->
+                                            <!--<div class="progress-bar progress-bar-pink" role="progressbar"-->
+                                                 <!--aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"-->
+                                                 <!--style="width: 77%;">-->
+                                                <!--<span class="sr-only">77% Complete</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                        		<!--</div>-->
+                            <!--</div>&lt;!&ndash; end col &ndash;&gt;-->
+
+                        <!--</div>-->
+                        <!--&lt;!&ndash; end row &ndash;&gt;-->
+
+
+                    <!-- SECTION FILTER
+                        ================================================== -->
+                        <!--<div class="row">-->
+                            <!--<div class="col-lg-12 col-md-12 col-sm-12 ">-->
+                                <!--<div class="portfolioFilter">-->
+                                    <!--<a href="#" data-filter="*" class="current waves-effect waves-custom">All</a>-->
+                                    <!--<a href="#" data-filter=".natural" class="waves-effect waves-custom">Natural</a>-->
+                                    <!--<a href="#" data-filter=".creative" class="waves-effect waves-custom">Creative</a>-->
+                                    <!--<a href="#" data-filter=".personal" class="waves-effect waves-custom">Personal</a>-->
+                                    <!--<a href="#" data-filter=".photography" class="waves-effect waves-custom">Photography</a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="row port m-b-20">
+                            <div class="portfolioContainer">
+                                <div class="col-sm-6 col-lg-3 col-md-4 natural personal">
+                                    <div class="gal-detail thumb">
+                                        <a href="{% static 'teamanagement/tea_img/1.png' %}" class="image-popup" title="Screenshot-1">
+                                            <img src="{% static 'teamanagement/tea_img/1.png' %}" class="thumb-img" alt="work-thumbnail">
+                                        </a>
+                                        <h4>Nature Image</h4>
+                                        <p class="text-muted">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo,
+                                            iste itaque voluptas corrupti ratione reprehenderit magni similique.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-lg-3 col-md-4 creative personal photography">
+                                    <div class="gal-detail thumb">
+                                        <a href="{% static 'teamanagement/tea_img/2.png' %}" class="image-popup" title="Screenshot-2">
+                                            <img src="{% static 'teamanagement/tea_img/2.png' %}" class="thumb-img" alt="work-thumbnail">
+                                        </a>
+                                        <h4>Gallary Image</h4>
+                                        <p class="text-muted">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo,
+                                            iste itaque voluptas corrupti ratione reprehenderit magni similique.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-lg-3 col-md-4 natural creative">
+                                    <div class="gal-detail thumb">
+                                        <a href="{% static 'teamanagement/tea_img/3.png' %}" class="image-popup" title="Screenshot-3">
+                                            <img src="{% static 'teamanagement/tea_img/3.png' %}" class="thumb-img" alt="work-thumbnail">
+                                        </a>
+                                        <h4>Gallary Image</h4>
+                                        <p class="text-muted">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo,
+                                            iste itaque voluptas corrupti ratione reprehenderit magni similique.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-lg-3 col-md-4 personal photography">
+                                    <div class="gal-detail thumb">
+                                        <a href="{% static 'teamanagement/tea_img/4.png' %}" class="image-popup" title="Screenshot-4">
+                                            <img src="{% static 'teamanagement/tea_img/4.png' %}" class="thumb-img" alt="work-thumbnail">
+                                        </a>
+                                        <h4>Gallary Image</h4>
+                                        <p class="text-muted">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo,
+                                            iste itaque voluptas corrupti ratione reprehenderit magni similique.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-lg-3 col-md-4 creative photography">
+                                    <div class="gal-detail thumb">
+                                        <a href="{% static 'teamanagement/tea_img/5.png' %}" class="image-popup" title="Screenshot-5">
+                                            <img src="{% static 'teamanagement/tea_img/5.png' %}" class="thumb-img" alt="work-thumbnail">
+                                        </a>
+                                        <h4>Gallary Image</h4>
+
+                                        <p class="text-muted">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo,
+                                            iste itaque voluptas corrupti ratione reprehenderit magni similique.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-lg-3 col-md-4 natural photography">
+                                    <div class="gal-detail thumb">
+                                        <a href="{% static 'teamanagement/tea_img/6.png' %}" class="image-popup" title="Screenshot-6">
+                                            <img src="{% static 'teamanagement/tea_img/6.png' %}" class="thumb-img" alt="work-thumbnail">
+                                        </a>
+                                        <h4>Gallary Image</h4>
+                                        <p class="text-muted">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo,
+                                            iste itaque voluptas corrupti ratione reprehenderit magni similique.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-lg-3 col-md-4 personal photography creative">
+                                    <div class="gal-detail thumb">
+                                        <a href="{% static 'teamanagement/tea_img/7.png' %}" class="image-popup" title="Screenshot-7">
+                                            <img src="{% static 'teamanagement/tea_img/7.png' %}" class="thumb-img" alt="work-thumbnail">
+                                        </a>
+                                        <h4>Gallary Image</h4>
+                                        <p class="text-muted">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo,
+                                            iste itaque voluptas corrupti ratione reprehenderit magni similique.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-lg-3 col-md-4 creative photography natural">
+                                    <div class="gal-detail thumb">
+                                        <a href="{% static 'teamanagement/tea_img/8.png' %}" class="image-popup" title="Screenshot-8">
+                                            <img src="{% static 'teamanagement/tea_img/8.png' %}" class="thumb-img" alt="work-thumbnail">
+                                        </a>
+                                        <h4>Gallary Image</h4>
+                                        <p class="text-muted">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo,
+                                            iste itaque voluptas corrupti ratione reprehenderit magni similique.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-lg-3 col-md-4 natural personal">
+                                    <div class="gal-detail thumb">
+                                        <a href="{% static 'teamanagement/tea_img/9.png' %}" class="image-popup" title="Screenshot-9">
+                                            <img src="{% static 'teamanagement/tea_img/9.png' %}" class="thumb-img" alt="work-thumbnail">
+                                        </a>
+                                        <h4>Gallary Image</h4>
+                                        <p class="text-muted">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, illo,
+                                            iste itaque voluptas corrupti ratione reprehenderit magni similique.
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div><!-- end portfoliocontainer-->
+                        </div> <!-- End row -->
+
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    2018 © 帅气无敌的开发小组.
+                </footer>
+
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+
+            <!-- Right Sidebar -->
+            <div class="side-bar right-bar">
+                <a href="javascript:void(0);" class="right-bar-toggle">
+                    <i class="zmdi zmdi-close-circle-o"></i>
+                </a>
+                <h4 class="">Notifications</h4>
+                <div class="notification-list nicescroll">
+                    <ul class="list-group list-no-border user-list">
+                        <li class="list-group-item">
+                            <a href="#" class="user-list-item">
+                                <div class="avatar">
+                                    <img src="assets/images/users/avatar-2.jpg" alt="">
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">Michael Zenaty</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">2 hours ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#" class="user-list-item">
+                                <div class="icon bg-info">
+                                    <i class="zmdi zmdi-account"></i>
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">New Signup</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">5 hours ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#" class="user-list-item">
+                                <div class="icon bg-pink">
+                                    <i class="zmdi zmdi-comment"></i>
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">New Message received</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">1 day ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item active">
+                            <a href="#" class="user-list-item">
+                                <div class="avatar">
+                                    <img src="assets/images/users/avatar-3.jpg" alt="">
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">James Anderson</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">2 days ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item active">
+                            <a href="#" class="user-list-item">
+                                <div class="icon bg-warning">
+                                    <i class="zmdi zmdi-settings"></i>
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">Settings</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">1 day ago</span>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- /Right-bar -->
+
+        </div>
+        <!-- END wrapper -->
+
+        <div id="log_out" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">登出</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>您确定登出么？</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-info waves-effect waves-light" id="logout">确认登出</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
+
+
+        <!-- jQuery  -->
+        <script src="{% static 'teamanagement/js/jquery.min.js' %}"></script>
+        <script src="{% static 'teamanagement/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'teamanagement/js/detect.js' %}"></script>
+        <script src="{% static 'teamanagement/js/fastclick.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.blockUI.js' %}"></script>
+        <script src="{% static 'teamanagement/js/waves.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.nicescroll.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.slimscroll.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.scrollTo.min.js' %}"></script>
+
+        <!-- KNOB JS -->
+        <!--[if IE]>
+        <script type="text/javascript" src="{% static 'teamanagement/plugins/jquery-knob/excanvas.js' %}"></script>
+        <![endif]-->
+        <script src="{% static 'teamanagement/plugins/jquery-knob/jquery.knob.js' %}"></script>
+
+        <!--Morris Chart-->
+		<script src="{% static 'teamanagement/plugins/morris/morris.min.js' %}"></script>
+		<script src="{% static 'teamanagement/plugins/raphael/raphael-min.js' %}"></script>
+
+        <!-- Dashboard init -->
+        <script src="{% static 'teamanagement/pages/jquery.dashboard.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static 'teamanagement/js/jquery.core.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.app.js' %}"></script>
+
+        <!-- Sweet Alert js -->
+        <script src="{% static 'teamanagement/plugins/bootstrap-sweetalert/sweet-alert.min.js' %}"></script>
+        <script src="{% static 'teamanagement/pages/jquery.sweet-alert.init.js' %}"></script>
+
+        <!-- isotope filter plugin -->
+        <script type="text/javascript" src="{% static 'teamanagement/plugins/isotope/dist/isotope.pkgd.min.js' %}"></script>
+
+        <!-- Magnific popup -->
+        <script type="text/javascript" src="{% static 'teamanagement/plugins/magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+
+        <script>
+            var resizefunc = [];
+
+            $(window).load(function(){
+                var $container = $('.portfolioContainer');
+                $container.isotope({
+                    filter: '*',
+                    animationOptions: {
+                        duration: 750,
+                        easing: 'linear',
+                        queue: false
+                    }
+                });
+
+                // $('.portfolioFilter a').click(function(){
+                //     $('.portfolioFilter .current').removeClass('current');
+                //     $(this).addClass('current');
+                //
+                //     var selector = $(this).attr('data-filter');
+                //     $container.isotope({
+                //         filter: selector,
+                //         animationOptions: {
+                //             duration: 750,
+                //             easing: 'linear',
+                //             queue: false
+                //         }
+                //     });
+                //     return false;
+                // });
+            });
+
+            $(document).ready(function() {
+
+                $('.image-popup').magnificPopup({
+                    type: 'image',
+                    closeOnContentClick: true,
+                    mainClass: 'mfp-fade',
+                    gallery: {
+                        enabled: true,
+                        navigateByImgClick: true,
+                        preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+                    }
+                });
+
+                $('#logout').click(function () {
+                    $.ajax({
+                           type:"POST",
+                           url:"/tea/logout",
+                           data:{},//传递数组
+                           success:function (data) {
+                               window.location.href = '/tea';
+                           },
+                            error:function (data) {
+                                swal({
+                                        title: "Wrong!",
+                                        text: "出错啦!",
+                                        type: "error",
+                                        showCancelButton: false,
+                                        confirmButtonClass: 'btn-danger waves-effect waves-light',
+                                        confirmButtonText: '返回!'
+                                });
+                               }
+                       });
+                });
+            });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <link rel="shortcut icon" href="{% static 'teamanagement/images/favicon.ico' %}">
+
+        <title>销售订单创建</title>
+
+        <!--Morris Chart CSS -->
+		<link rel="stylesheet" href="{% static 'teamanagement/plugins/morris/morris.css' %}">
+
+        <!-- App css -->
+        <link href="{% static 'teamanagement/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/core.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/components.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/icons.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/pages.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/menu.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/responsive.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- Plugins css-->
+        <link href="{% static 'teamanagement/plugins/multiselect/css/multi-select.css' %}"  rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/plugins/select2/dist/css/select2.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'teamanagement/plugins/select2/dist/css/select2-bootstrap.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'teamanagement/plugins/timepicker/bootstrap-timepicker.min.css' %}" rel="stylesheet">
+		<link href="{% static 'teamanagement/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' %}" rel="stylesheet">
+		<link href="{% static 'teamanagement/plugins/bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet">
+        <link href="{% static 'teamanagement/plugins/switchery/switchery.min.css' %}" rel="stylesheet" />
+
+        <!-- DataTables -->
+        <link href="{% static 'teamanagement/plugins/datatables/jquery.dataTables.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/plugins/datatables/buttons.bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/plugins/datatables/fixedHeader.bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/plugins/datatables/responsive.bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/plugins/datatables/scroller.bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- Sweet Alert css -->
+        <link href="{% static 'teamanagement/plugins/bootstrap-sweetalert/sweet-alert.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- Circlifull chart css -->
+        <link href="{% static 'teamanagement/plugins/jquery-circliful/css/jquery.circliful.css' %}" rel="stylesheet" type="text/css"/>
+
+        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="{% static 'teamanagement/js/modernizr.min.js' %}"></script>
+
+    </head>
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <a href="index_page" class="logo"><span>超级<span>奶爸</span></span><i class="zmdi zmdi-layers"></i></a>
+                </div>
+
+                <!-- Button mobile view to collapse sidebar menu -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+
+                        <!-- Page title -->
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <button class="button-menu-mobile open-left">
+                                    <i class="zmdi zmdi-menu"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <h4 class="page-title">销售订单创建</h4>
+                            </li>
+                        </ul>
+
+                        <!-- Right(Notification and Searchbox -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <!-- Notification -->
+                                <div class="notification-box">
+                                    <ul class="list-inline m-b-0">
+                                        <li>
+                                            <a href="javascript:void(0);" class="right-bar-toggle">
+                                                <i class="zmdi zmdi-notifications-none"></i>
+                                            </a>
+                                            <div class="noti-dot">
+                                                <span class="dot"></span>
+                                                <span class="pulse"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- End Notification bar -->
+                            </li>
+                            <li class="hidden-xs">
+                                <form role="search" class="app-search">
+                                    <input type="text" placeholder="在这里搜索..."
+                                           class="form-control">
+                                    <a href=""><i class="fa fa-search"></i></a>
+                                </form>
+                            </li>
+                        </ul>
+
+                    </div><!-- end container -->
+                </div><!-- end navbar -->
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+
+                    <!-- User -->
+                    <div class="user-box">
+                        <div class="user-img">
+                            <img src="{% static 'teamanagement/images/users/administrator.png' %}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                            <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
+                        </div>
+                        <h5><a href="#">{{ request.session.identity }}</a> </h5>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#" >
+                                    <i class="zmdi zmdi-settings"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="text-custom" data-toggle="modal" data-target="#log_out">
+                                    <i class="zmdi zmdi-power"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End User -->
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <ul>
+                        	<li class="text-muted menu-title">菜单栏</li>
+
+                            <li>
+                                <a href="/tea/index" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> 首页 </span> </a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-assignment-o"></i><span> 采购部 </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" style="">
+                                    <li><a href="/tea/purchase_create">采购单创建</a></li>
+                                    <li><a href="/tea/purchase_show">采购单查看</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-case-check"></i><span> 仓库管理 </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" style="">
+                                    <li><a href="/tea/warehouse_confirm">仓库确认订单</a></li>
+                                    <li><a href="/tea/warehouse_goodscheck">仓库物品查看</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-mall"></i><span> 销售部 </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" style="">
+                                    <li><a href="/tea/sales_create">销售单创建</a></li>
+                                    <li><a href="/tea/sales_show">销售单查看</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="/tea/finance_show" class="waves-effect"><i class="zmdi zmdi-money-box"></i> <span> 财务部 </span> </a>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="clearfix"></div>
+
+                </div>
+
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+             <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
+
+                        <!-- 上方的采购单信息表 -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box">
+
+                                    <h4 class="header-title m-t-0 m-b-30">销售单信息填写</h4>
+
+                                    <div class="row">
+                                        <div class="col-lg-3"></div><!-- end col -->
+
+                                        <div class="col-lg-6">
+
+                                            <form class="form-horizontal group-border-dashed">
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">销售负责人姓名*</label>
+                                                    <div class="col-md-9">
+                                                        <select class="form-control select2" id="staff_name" required>
+                                                            <option>选择员工姓名</option>
+
+                                                            <option>张三</option>
+                                                            <option>李四</option>
+                                                            <option>王五</option>
+                                                            <option>赵六</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">销售时间*</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control" readonly="" value="Readonly value" id="today">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">是否是会员*</label>
+                                                    <div class="col-md-9">
+                                                        <input type="checkbox" data-plugin="switchery" data-color="#10c469" id="member"/>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+
+
+                                        <div class="col-lg-3"></div><!-- end col -->
+
+                                        </div><!-- end row -->
+
+                                    </div><!-- end row -->
+
+                                    <div class="row">
+
+                                        <div class="col-lg-3"></div><!-- end col -->
+
+                                        <div class="col-lg-6">
+
+                                            <form class="form-horizontal group-border-dashed">
+
+                                                <div class="form-group">
+
+                                                    <label class="col-md-3 control-label">折扣*</label>
+                                                    <div class="col-md-9">
+                                                        <input type="checkbox" data-plugin="switchery" data-color="#10c469" id="discount"/>
+                                                    </div>
+
+                                                    <label class="col-md-3 control-label"></label>
+
+                                                    <div class="col-sm-6 col-lg-6 text-center" id="meter" style="display: none;">
+                                                        <div class="p-20">
+                                                            <input data-plugin="knob" data-width="150" data-height="150"
+                                                                   data-displayPrevious=true data-fgColor="#ff5b5b" data-skin="tron"
+                                                                   data-cursor=true value="75" data-thickness=".2" data-angleOffset=-125
+                                                                   data-angleArc=250 id="dis_num"/>
+                                                            <h5 class="font-600 text-muted">折扣</h5>
+                                                        </div>
+                                                    </div><!-- end col-->
+
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+
+                                        <div class="col-lg-3"></div><!-- end col -->
+
+                                    </div><!-- end row-->
+
+                                </div>
+
+                            </div><!-- end col -->
+                        </div>
+                        <!-- End row -->
+
+                        <!-- 下方的表格 -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="m-b-30">
+                                                    <button data-toggle="modal" data-target="#myModal" class="btn btn-primary waves-effect waves-light">添加商品 <i class="fa fa-plus"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <table id="datatable" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>奶茶名</th>
+                                                    <th>数量</th>
+                                                    <th>温度</th>
+                                                    <th>甜度</th>
+                                                    <th>加料</th>
+                                                    <th>单价</th>
+                                                    <th>操作选项</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th><h5>原价</h5></th>
+                                                    <th><h5 id="origin_price">0.00</h5></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th><h5>总价</h5></th>
+                                                    <th><h5 id="sum_price">0.00</h5></th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+
+                                        <br/>
+
+
+                                        <div class="form-group text-right m-b-0" style="float: left">
+                                            <button class="btn btn-primary waves-effect waves-light" type="submit" id="sales_submit">
+                                                提交销售单
+                                            </button>
+                                            <button type="reset" class="btn btn-default waves-effect waves-light m-l-5">
+                                                取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- end: panel body -->
+
+                                </div> <!-- end panel -->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- End row -->
+
+
+                    </div> <!-- container -->
+
+
+                </div> <!-- content -->
+
+                <footer class="footer">
+                    2018 © 帅气无敌的开发小组.
+                </footer>
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+
+            <!-- Right Sidebar -->
+            <div class="side-bar right-bar">
+                <a href="javascript:void(0);" class="right-bar-toggle">
+                    <i class="zmdi zmdi-close-circle-o"></i>
+                </a>
+                <h4 class="">Notifications</h4>
+                <div class="notification-list nicescroll">
+                    <ul class="list-group list-no-border user-list">
+                        <li class="list-group-item">
+                            <a href="#" class="user-list-item">
+                                <div class="avatar">
+                                    <img src="assets/images/users/avatar-2.jpg" alt="">
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">Michael Zenaty</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">2 hours ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#" class="user-list-item">
+                                <div class="icon bg-info">
+                                    <i class="zmdi zmdi-account"></i>
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">New Signup</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">5 hours ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#" class="user-list-item">
+                                <div class="icon bg-pink">
+                                    <i class="zmdi zmdi-comment"></i>
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">New Message received</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">1 day ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item active">
+                            <a href="#" class="user-list-item">
+                                <div class="avatar">
+                                    <img src="assets/images/users/avatar-3.jpg" alt="">
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">James Anderson</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">2 days ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item active">
+                            <a href="#" class="user-list-item">
+                                <div class="icon bg-warning">
+                                    <i class="zmdi zmdi-settings"></i>
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">Settings</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">1 day ago</span>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- /Right-bar -->
+
+        </div>
+        <!-- END wrapper -->
+
+        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">添加奶茶</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">奶茶</label>
+                                <select class="form-control select2" id="tea_name">
+                                    <option>选择奶茶</option>
+                                    {% for tea in tea_info%}
+                                        <option value="{{ tea.id }}">{{ tea.tea_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">温度</label>
+                                <select class="form-control select2" id="tea_tem">
+                                    <option>选择温度</option>
+
+                                    <option>加冰</option>
+                                    <option>常温</option>
+                                    <option>加热</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">甜度</label>
+                                <select class="form-control select2" id="tea_sugar">
+                                    <option>选择温度</option>
+
+                                    <option>低糖</option>
+                                    <option>正常甜度</option>
+                                    <option>加糖</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">加料</label>
+                                <select class="select2 select2-multiple" multiple="multiple" multiple id="tea_addition">
+
+                                    {% for add in addition_info%}
+                                        <option value="{{ add.id }}">{{ add.name }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">数量</label>
+                                <input id="tea_num" type="text" value="">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-info waves-effect waves-light" id="tea_add">添加</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
+        <div id="log_out" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">登出</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>您确定登出么？</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-info waves-effect waves-light" id="logout">确认登出</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src="{% static 'teamanagement/js/jquery.min.js' %}"></script>
+        <script src="{% static 'teamanagement/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'teamanagement/js/detect.js' %}"></script>
+        <script src="{% static 'teamanagement/js/fastclick.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.blockUI.js' %}"></script>
+        <script src="{% static 'teamanagement/js/waves.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.nicescroll.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.slimscroll.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.scrollTo.min.js' %}"></script>
+
+
+        <!-- Plugins Js -->
+        <script src="{% static 'teamanagement/plugins/moment/moment.js' %}"></script>
+     	<script src="{% static 'teamanagement/plugins/timepicker/bootstrap-timepicker.min.js' %}"></script>
+     	<script src="{% static 'teamanagement/plugins/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+     	<script src="{% static 'teamanagement/plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/switchery/switchery.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/multiselect/js/jquery.multi-select.js' %}" type="text/javascript"></script>
+        <script src="{% static 'teamanagement/plugins/select2/dist/js/select2.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'teamanagement/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js' %}" type="text/javascript"></script>
+
+
+        <!-- Datatables-->
+        <script src="{% static 'teamanagement/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/dataTables.bootstrap.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/buttons.bootstrap.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/jszip.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/pdfmake.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/vfs_fonts.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/buttons.print.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/dataTables.fixedHeader.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/dataTables.keyTable.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/datatables/responsive.bootstrap.min.js' %}"></script>
+        <!--<script src="{% static 'teamanagement/plugins/datatables/dataTables.scroller.min.js' %"></script>-->
+
+        <!-- Datatable init js -->
+        <script src="{% static 'teamanagement/pages/datatables.init.js' %}"></script>
+
+        <!-- Sweet Alert js -->
+        <script src="{% static 'teamanagement/plugins/bootstrap-sweetalert/sweet-alert.min.js' %}"></script>
+        <script src="{% static 'teamanagement/pages/jquery.sweet-alert.init.js' %}"></script>
+
+        <!-- KNOB JS -->
+        <!--[if IE]>
+        <script type="text/javascript" src="{% static 'teamanagement/plugins/jquery-knob/excanvas.js' %}"></script>
+        <![endif]-->
+        <script src="{% static 'teamanagement/plugins/jquery-knob/jquery.knob.js' %}"></script>
+
+        <!-- Circliful -->
+        <script src="{% static 'teamanagement/plugins/jquery-circliful/js/jquery.circliful.min.js' %}"></script>
+
+        <!-- Sparkline charts -->
+        <script src="{% static 'teamanagement/plugins/jquery-sparkline/jquery.sparkline.min.js' %}"></script>
+        <script src="{% static 'teamanagement/pages/jquery.other-charts.js' %}"></script>
+
+        <!-- peity charts -->
+        <script src="{% static 'teamanagement/plugins/peity/jquery.peity.min.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static 'teamanagement/js/jquery.core.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.app.js' %}"></script>
+
+        <script>
+            // 格式化时间
+            Date.prototype.Format = function(fmt)
+            {
+              var o = {
+                "M+" : this.getMonth()+1,                 //月份
+                "d+" : this.getDate(),                    //日
+                "h+" : this.getHours(),                   //小时
+                "m+" : this.getMinutes(),                 //分
+                "s+" : this.getSeconds(),                 //秒
+                "q+" : Math.floor((this.getMonth()+3)/3), //季度
+                "S"  : this.getMilliseconds()             //毫秒
+              };
+              if(/(y+)/.test(fmt))
+                fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+              for(var k in o)
+                if(new RegExp("("+ k +")").test(fmt))
+              fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+              return fmt;
+            }
+            jQuery(document).ready(function() {
+
+                //登出
+                $('#logout').click(function () {
+                    $.ajax({
+                       type:"POST",
+                       url:"/tea/logout",
+                       data:{},//传递数组
+                       success:function (data) {
+                           window.location.href = '/tea';
+                       },
+                        error:function (data) {
+                            swal({
+                                    title: "Wrong!",
+                                    text: "出错啦!",
+                                    type: "error",
+                                    showCancelButton: false,
+                                    confirmButtonClass: 'btn-danger waves-effect waves-light',
+                                    confirmButtonText: '返回!'
+                            });
+                           }
+                       });
+                });
+
+
+                $('#datatable').dataTable();
+
+                // Select2
+                $(".select2").select2();
+
+                $("#tea_num").TouchSpin({
+                    initval: 1,
+                    buttondown_class: "btn btn-primary",
+                    buttonup_class: "btn btn-primary"
+                });
+
+                var today = new Date();
+                $("#today").val(today.Format("yyyy/MM/dd"));
+
+                // discount按钮改变时，表哥下方的数字也需要改变
+                $('#discount').change(function () {
+
+                    $('#meter').toggle('normal');
+
+                    if($('#datatable tbody tr').text() != 'No data available in table'){
+
+                        var discount = 100;
+                        if($('#discount').is(':checked')){
+                            discount = $('#dis_num').val();
+                        }else{
+                            discount = 100;
+                        }
+
+                        var origin_price = 0;
+
+                        $('#datatable tbody tr').each(function() {
+                            var tea_price=$(this).find("td").eq(5).text(); // 第六列
+                            // 算个总的原价
+                            origin_price = origin_price + parseInt(tea_price);
+                        });
+
+                        if($('#member').is(':checked')){
+                            // 控制小数位数
+                            $('#sum_price').text((origin_price * 0.8 * (discount/100)).toFixed(2));
+                        }else{
+                            $('#sum_price').text((origin_price * (discount/100)).toFixed(2));
+                        }
+                    }
+
+                });
+
+                // member也是这样
+                $('#member').change(function () {
+                    if($('#datatable tbody tr').text() != 'No data available in table'){
+
+                        var discount = 100;
+                        if($('#discount').is(':checked')){
+                            discount = $('#dis_num').val();
+                        }else{
+                            discount = 100;
+                        }
+
+                        var origin_price = 0;
+
+                        $('#datatable tbody tr').each(function() {
+                            var tea_price=$(this).find("td").eq(5).text(); // 第六列
+                            // 算个总的原价
+                            origin_price = origin_price + parseInt(tea_price);
+                        });
+
+                        if($('#member').is(':checked')){
+                            // 控制小数位数
+                            $('#sum_price').text((origin_price * 0.8 * (discount/100)).toFixed(2));
+                        }else{
+                            $('#sum_price').text((origin_price * (discount/100)).toFixed(2));
+                        }
+                    }
+                });
+
+                // 注意
+                // 因为这些节点是jquery动态添加的，所以直接使用一般用法是不行的，因为那时的并没有这个节点
+                // 所以把这个事件委托给一个一直存在的东西
+                // https://blog.zfanw.com/jquery-dynamic-insert-element-bind-event/
+                $(document).on('click', '.btn-danger', function(){
+                    var table = $('#datatable').DataTable();
+                    //$(this).parent().parent().remove();
+                    table.row($(this).parents('tr')).remove().draw();
+                    // 重新计算总价
+                    var discount = 100;
+                    if($('#discount').is(':checked')){
+                        discount = $('#dis_num').val();
+                    }else{
+                        discount = 100;
+                    }
+
+                    var origin_price = 0.0;
+
+                    $('#datatable tbody tr').each(function() {
+                        var tea_price=$(this).find("td").eq(5).text(); // 第六列
+                        // 算个总的原价
+                        origin_price = origin_price + parseInt(tea_price);
+                    });
+
+                    if($('#member').is(':checked')){
+                        // 控制小数位数
+                        $('#sum_price').text((origin_price * 0.8 * (discount/100)).toFixed(2));
+                    }else{
+                        $('#sum_price').text((origin_price * (discount/100)).toFixed(2));
+                    }
+
+                    $('#origin_price').text(origin_price.toFixed(2));
+
+                    if($('#datatable tbody tr').text() == 'No data available in table'){
+                        $('#sum_price').text('0.00');
+                        $('#origin_price').text('0.00');
+                    }
+                });
+
+                // 添加奶茶
+                $('#tea_add').click(function () {
+                    var tea_name = $('#tea_name').find("option:selected").text();
+                    var tea_tem = $('#tea_tem').find("option:selected").text();
+                    var tea_sugar = $('#tea_sugar').find("option:selected").text();
+                    var tea_addition = [];
+                    console.log(tea_name + tea_tem + tea_sugar);
+                    // 多选项
+                    $("#tea_addition option").each(function() {
+                        if($(this).is(':checked')){
+                            tea_addition.push($(this).text());
+                        }
+
+                    });
+
+                    var tea_num = $('#tea_num').val();
+                    var price = '';
+
+                    //console.log(tea_name +'|||'+ tea_tem +'|||'+ tea_sugar +'|||' + tea_addition +'|||'+ tea_num);
+
+                    // 传输的信息
+                    var msg={};
+
+                    msg['tea_name'] = tea_name;
+                    msg["tea_addition"] = tea_addition;
+                    msg["tea_num"] = tea_num;
+
+                    // 之前在表格中的内容
+                    var table_data = [];
+                    if($('#datatable tbody tr').text() == 'No data available in table'){
+                        table_data = [['珍珠奶茶', '0', '珍珠']];
+                    }else{
+                        $('#datatable tbody tr').each(function() {
+                            var old_tea_name=$(this).find("td").eq(0).text(); // 第一列
+                            var old_tea_num=$(this).find("td").eq(1).text(); // 第二列
+                            //var tea_tem=$(this).find("td").eq(2).text(); // 第三列
+                            //var tea_sugar=$(this).find("td").eq(3).text(); // 第四列
+                            var old_tea_addition=$(this).find("td").eq(4).text(); // 第五列
+                            //var tea_price=$(this).find("td").eq(5).text(); // 第六列
+
+                            var data = [old_tea_name, old_tea_num, old_tea_addition];
+                            table_data.push(data);
+
+                        });
+                    }
+
+                    //检查选项
+                    if(tea_name == '选择奶茶'){
+
+                        swal({
+                                title: "Wrong!",
+                                text: "请选择奶茶!",
+                                type: "error",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-danger waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                        });
+
+                    }else if(tea_tem == '选择温度'){
+
+                        swal({
+                                title: "Wrong!",
+                                text: "请选择温度!",
+                                type: "error",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-danger waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                        });
+
+                    }else if(tea_sugar == '选择甜度'){
+
+                        swal({
+                                title: "Wrong!",
+                                text: "请选择甜度!",
+                                type: "error",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-danger waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                        });
+
+                    }else if(tea_num < 1){
+
+                        swal({
+                                title: "Wrong!",
+                                text: "数量出错!",
+                                type: "error",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-danger waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                        });
+
+                    }else{
+
+                        $.ajax({
+                           type:"POST",
+                           url:"/tea/tea_buy",
+                           data:{"tea_info":JSON.stringify(msg),
+                           'table_data':JSON.stringify({'data':table_data})},//传递数组
+                           success:function (data) {
+                               data = JSON.parse(data);
+                               //alert(data['result']);
+
+                               // 材料足够
+                               if(data['flag'] == 'true'){
+
+                                    // datatable 添加一行数据
+                                    var table = $('#datatable').DataTable();
+                                    table.row.add([tea_name, tea_num, tea_tem, tea_sugar, tea_addition, data['sum_price'],
+                                        '<td class="actions">\n' +
+                                        '&nbsp;&nbsp;&nbsp;\n' +
+                                        '<button type="button" class="btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5 btn-sm">删  除</button>\n' +
+                                        '</td>\n']
+                                    ).draw();
+
+                                    $('#myModal').modal('hide');
+
+                                    // 最下方的总价也需要调整
+                                    // 这个总价是需要计算打折的
+
+                                   var discount = 100;
+                                   if($('#discount').is(':checked')){
+                                       discount = $('#dis_num').val();
+                                   }else{
+                                       discount = 100;
+                                   }
+
+                                   var origin_price = 0;
+
+                                   $('#datatable tbody tr').each(function() {
+                                       var tea_price=$(this).find("td").eq(5).text(); // 第六列
+                                       // 算个总的原价
+                                       origin_price = origin_price + parseInt(tea_price);
+                                   });
+
+                                   if($('#member').is(':checked')){
+                                       // 控制小数位数
+                                       $('#sum_price').text((origin_price * 0.8 * (discount/100)).toFixed(2));
+                                   }else{
+                                       $('#sum_price').text((origin_price * (discount/100)).toFixed(2));
+                                   }
+
+                                   $('#origin_price').text(origin_price.toFixed(2));
+
+
+                                // 材料不足
+                               }else{
+                                   // 这里有个很愚蠢的bug，首先需要关闭模态框，在进行alert，不然会报堆栈溢出错误
+                                   $('#myModal').modal('hide');
+                                   // 这是一个alert
+                                   swal({
+                                        title: "Wrong!",
+                                        text: data['result'],
+                                        type: "warning",
+                                        showCancelButton: false,
+                                        confirmButtonClass: 'btn-danger waves-effect waves-light',
+                                        confirmButtonText: '返回!'
+                                   });
+                                   //$('#myModal').modal('show');
+                               }
+
+
+                           },
+                            error:function (data) {
+                                swal({
+                                        title: "Wrong!",
+                                        text: "出错啦!",
+                                        type: "error",
+                                        showCancelButton: false,
+                                        confirmButtonClass: 'btn-danger waves-effect waves-light',
+                                        confirmButtonText: '返回!'
+                                });
+                               }
+                       });
+
+                    }
+
+                });
+
+                // 提交订单
+                $('#sales_submit').click(function () {
+                    var today = $('#today').val();
+                    var staff_name = $("#staff_name").find("option:selected").text();
+                    var ismember = '';
+                    if($('#member').is(':checked')){
+                        ismember = 'yes'
+                    }else{
+                        ismember = 'no'
+                    }
+                    var discount = 100;
+                    if($('#discount').is(':checked')){
+                        discount = $('#dis_num').val();
+                    }else{
+                        discount = 100;
+                    }
+
+                    var table_data = [];
+
+                    $('#datatable tbody tr').each(function() {
+                        var tea_name=$(this).find("td").eq(0).text(); // 第一列
+                        var tea_num=$(this).find("td").eq(1).text(); // 第二列
+                        var tea_tem=$(this).find("td").eq(2).text(); // 第三列
+                        var tea_sugar=$(this).find("td").eq(3).text(); // 第四列
+                        var tea_addition=$(this).find("td").eq(4).text(); // 第五列
+                        var tea_price=$(this).find("td").eq(5).text(); // 第六列
+
+                        var data = [tea_name, tea_num, tea_tem, tea_sugar, tea_addition, tea_price];
+                        table_data.push(data);
+
+                    });
+
+                    var origin_price = $('#origin_price').text();
+                    var discount_price = $('#sum_price').text();
+
+                    var msg={};
+                    msg['today'] = today;
+                    msg['staff_name'] = staff_name;
+                    msg['ismember'] = ismember;
+                    msg['discount'] = discount;
+                    msg['origin_price'] = origin_price;
+                    msg['discount_price'] = discount_price;
+
+
+                    if(table_data[0][0] == 'No data available in table'){
+                        swal({
+                                title: "Sorry!",
+                                text: "抱歉，您没有输入销售的物品，请添加需要销售的物品！",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-warning waves-effect waves-light',
+                                confirmButtonText: '返回！'
+                            });
+                    }else if(msg.staff_name == '选择员工姓名'){
+                        swal({
+                                title: "Sorry!",
+                                text: "抱歉，您没有输入销售员的姓名，请选择！",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-warning waves-effect waves-light',
+                                confirmButtonText: 'Warning!'
+                            });
+                    }else{
+                        $.ajax({
+                           type:"POST",
+                           url:"/tea/sales_input",
+                           data:{"sales_data":JSON.stringify(msg),
+                               'table_data':JSON.stringify({'data':table_data})},//传递数组
+                           success:function (data) {
+                               data = JSON.parse(data);
+                               //alert(data['result']);
+                               // 这是一个alert
+                               swal({
+                                   title: "Success!",
+                                   type: "success",
+                                   text: data['result'],
+                                   showCancelButton: false,
+                                   confirmButtonClass: 'btn-success waves-effect waves-light',
+                                   confirmButtonText: '完成!'
+                               });
+
+                               // 完成后清空表格
+                               var table = $('#datatable').DataTable();
+                               table.clear().draw();
+
+                           },
+                            error:function (data) {
+                                swal({
+                                        title: "Wrong!",
+                                        text: "出错啦!",
+                                        type: "error",
+                                        showCancelButton: false,
+                                        confirmButtonClass: 'btn-danger waves-effect waves-light',
+                                        confirmButtonText: '返回!'
+                                });
+                               }
+                       });
+                    }
+                });
+
+            });
+
+
+        </script>
+
+    </body>
+</html>

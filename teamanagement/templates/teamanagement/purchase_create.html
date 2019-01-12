@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <link rel="shortcut icon" href="{% static 'teamanagement/images/favicon.ico' %}">
+
+        <title>采购订单创建</title>
+
+        <!--Morris Chart CSS -->
+		<link rel="stylesheet" href="{% static 'teamanagement/plugins/morris/morris.css' %}">
+
+        <!-- App css -->
+        <link href="{% static 'teamanagement/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/core.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/components.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/icons.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/pages.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/menu.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/css/responsive.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- Plugins css-->
+        <link href="{% static 'teamanagement/plugins/multiselect/css/multi-select.css' %}"  rel="stylesheet" type="text/css" />
+        <link href="{% static 'teamanagement/plugins/select2/dist/css/select2.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'teamanagement/plugins/select2/dist/css/select2-bootstrap.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'teamanagement/plugins/timepicker/bootstrap-timepicker.min.css' %}" rel="stylesheet">
+		<link href="{% static 'teamanagement/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' %}" rel="stylesheet">
+		<link href="{% static 'teamanagement/plugins/bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet">
+
+        <!-- Editatable  Css-->
+        <link rel="stylesheet" href="{% static 'teamanagement/plugins/magnific-popup/dist/magnific-popup.css' %}" />
+        <link rel="stylesheet" href="{% static 'teamanagement/plugins/jquery-datatables-editable/datatables.css' %}" />
+
+        <!-- Sweet Alert css -->
+        <link href="{% static 'teamanagement/plugins/bootstrap-sweetalert/sweet-alert.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="{% static 'teamanagement/js/modernizr.min.js' %}"></script>
+
+    </head>
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <a href="index_page" class="logo"><span>超级<span>奶爸</span></span><i class="zmdi zmdi-layers"></i></a>
+                </div>
+
+                <!-- Button mobile view to collapse sidebar menu -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+
+                        <!-- Page title -->
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <button class="button-menu-mobile open-left">
+                                    <i class="zmdi zmdi-menu"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <h4 class="page-title">采购单创建</h4>
+                            </li>
+                        </ul>
+
+                        <!-- Right(Notification and Searchbox -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <!-- Notification -->
+                                <div class="notification-box">
+                                    <ul class="list-inline m-b-0">
+                                        <li>
+                                            <a href="javascript:void(0);" class="right-bar-toggle">
+                                                <i class="zmdi zmdi-notifications-none"></i>
+                                            </a>
+                                            <div class="noti-dot">
+                                                <span class="dot"></span>
+                                                <span class="pulse"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- End Notification bar -->
+                            </li>
+                            <li class="hidden-xs">
+                                <form role="search" class="app-search">
+                                    <input type="text" placeholder="在这里搜索..."
+                                           class="form-control">
+                                    <a href=""><i class="fa fa-search"></i></a>
+                                </form>
+                            </li>
+                        </ul>
+
+                    </div><!-- end container -->
+                </div><!-- end navbar -->
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+
+                    <!-- User -->
+                    <div class="user-box">
+                        <div class="user-img">
+                            <img src="{% static 'teamanagement/images/users/administrator.png' %}" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                            <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
+                        </div>
+                        <h5><a href="#">{{ request.session.identity }}</a> </h5>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#" >
+                                    <i class="zmdi zmdi-settings"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="text-custom" data-toggle="modal" data-target="#log_out">
+                                    <i class="zmdi zmdi-power"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End User -->
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <ul>
+                        	<li class="text-muted menu-title">菜单栏</li>
+
+                            <li>
+                                <a href="/tea/index" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> 首页 </span> </a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-assignment-o"></i><span> 采购部 </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" style="">
+                                    <li><a href="/tea/purchase_create">采购单创建</a></li>
+                                    <li><a href="/tea/purchase_show">采购单查看</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-case-check"></i><span> 仓库管理 </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" style="">
+                                    <li><a href="/tea/warehouse_confirm">仓库确认订单</a></li>
+                                    <li><a href="/tea/warehouse_goodscheck">仓库物品查看</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-mall"></i><span> 销售部 </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" style="">
+                                    <li><a href="/tea/sales_create">销售单创建</a></li>
+                                    <li><a href="/tea/sales_show">销售单查看</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="/tea/finance_show" class="waves-effect"><i class="zmdi zmdi-money-box"></i> <span> 财务部 </span> </a>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="clearfix"></div>
+
+                </div>
+
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+             <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
+
+                        <!-- 上方的采购单信息表 -->
+                        <div class="row">
+                        	<div class="col-sm-12">
+                        		<div class="card-box">
+
+                        			<h4 class="header-title m-t-0 m-b-30">采购单信息填写</h4>
+
+                        			<div class="row">
+                                        <div class="col-lg-3"></div><!-- end col -->
+
+
+                                        <div class="col-lg-6">
+
+                                            <form class="form-horizontal group-border-dashed">
+
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">采购负责人姓名*</label>
+                                                    <div class="col-md-9">
+                                                        <select class="form-control select2" id="staff_name" required>
+                                                            <option>选择员工姓名</option>
+
+                                                            <option>张三</option>
+                                                            <option>李四</option>
+                                                            <option>王五</option>
+                                                            <option>赵六</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+	                                                <label class="col-md-3 control-label">商家名称*</label>
+	                                                <div class="col-md-9">
+	                                                    <input type="text" class="form-control" id="merchant_name" required>
+	                                                </div>
+	                                            </div>
+
+                                                <div class="form-group">
+	                                                <label class="col-md-3 control-label">商家联系人电话*</label>
+	                                                <div class="col-md-9">
+	                                                    <input data-parsley-type="number" type="text" class="form-control" id="merchant_phone" required>
+	                                                </div>
+	                                            </div>
+
+                                                <div class="form-group">
+	                                                <label class="col-md-3 control-label">采购时间*</label>
+	                                                <div class="col-md-9">
+	                                                    <input type="text" class="form-control" readonly="" value="Readonly value" id="today">
+	                                                </div>
+	                                            </div>
+
+                                                <div class="form-group">
+	                                                <label class="col-md-3 control-label">预计到货时间*</label>
+	                                                <div class="col-md-9">
+	                                                    <div class="input-group">
+                                                            <input type="text" class="form-control" placeholder="请选择预期到货日期" id="datepicker-autoclose">
+                                                            <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
+                                                        </div><!-- input-group -->
+	                                                </div>
+	                                            </div>
+                                            </form>
+                                        </div><!-- end col -->
+
+                                        <div class="col-lg-3"></div><!-- end col -->
+
+                        			</div><!-- end row -->
+
+                        		</div>
+                        	</div><!-- end col -->
+                        </div>
+                        <!-- End row -->
+
+                        <!-- 下方的表格 -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="m-b-30">
+                                                    <button id="addToTable" class="btn btn-primary waves-effect waves-light">添加采购物品 <i class="fa fa-plus"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="editable-responsive">
+                                            <table class="table table-striped" id="datatable-editable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>采购品名称</th>
+                                                        <th>采购品规格</th>
+                                                        <th>采购品数量</th>
+                                                        <th>采购品单价</th>
+                                                        <th>操作选项</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="gradeX">
+                                                        <td>珍珠</td>
+                                                        <td>包</td>
+                                                        <td>10</td>
+                                                        <td>0.5</td>
+                                                        <td class="actions">
+                                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="gradeA">
+                                                        <td>椰果</td>
+                                                        <td>桶</td>
+                                                        <td>7</td>
+                                                        <td>0.5</td>
+                                                        <td class="actions">
+                                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="gradeC">
+                                                        <td>红豆</td>
+                                                        <td>斤</td>
+                                                        <td>5</td>
+                                                        <td>0.5</td>
+                                                        <td class="actions">
+                                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                        <br/>
+
+
+                                        <div class="form-group text-right m-b-0" style="float: left">
+                                            <button class="btn btn-primary waves-effect waves-light" type="submit" id="purcahse_submit">
+                                                提交采购单
+                                            </button>
+                                            <button type="reset" class="btn btn-default waves-effect waves-light m-l-5">
+                                                取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- end: panel body -->
+
+                                </div> <!-- end panel -->
+                            </div> <!-- end col-->
+                        </div>
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer">
+                    2018 © 帅气无敌的开发小组.
+                </footer>
+
+            </div>
+
+            <!-- MODAL -->
+			<div id="dialog" class="modal-block mfp-hide">
+				<section class="panel panel-info panel-color">
+					<header class="panel-heading">
+						<h2 class="panel-title">您确定删除么?</h2>
+					</header>
+					<div class="panel-body">
+						<div class="modal-wrapper">
+							<div class="modal-text">
+								<p>您确定需要删除这一行数据么?</p>
+							</div>
+						</div>
+
+						<div class="row m-t-20">
+							<div class="col-md-12 text-right">
+								<button id="dialogConfirm" class="btn btn-primary waves-effect waves-light">确定</button>
+								<button id="dialogCancel" class="btn btn-default waves-effect">取消</button>
+							</div>
+						</div>
+					</div>
+
+				</section>
+			</div>
+			<!-- end Modal -->
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+
+            <!-- Right Sidebar -->
+            <div class="side-bar right-bar">
+                <a href="javascript:void(0);" class="right-bar-toggle">
+                    <i class="zmdi zmdi-close-circle-o"></i>
+                </a>
+                <h4 class="">Notifications</h4>
+                <div class="notification-list nicescroll">
+                    <ul class="list-group list-no-border user-list">
+                        <li class="list-group-item">
+                            <a href="#" class="user-list-item">
+                                <div class="avatar">
+                                    <img src="assets/images/users/avatar-2.jpg" alt="">
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">Michael Zenaty</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">2 hours ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#" class="user-list-item">
+                                <div class="icon bg-info">
+                                    <i class="zmdi zmdi-account"></i>
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">New Signup</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">5 hours ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#" class="user-list-item">
+                                <div class="icon bg-pink">
+                                    <i class="zmdi zmdi-comment"></i>
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">New Message received</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">1 day ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item active">
+                            <a href="#" class="user-list-item">
+                                <div class="avatar">
+                                    <img src="assets/images/users/avatar-3.jpg" alt="">
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">James Anderson</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">2 days ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item active">
+                            <a href="#" class="user-list-item">
+                                <div class="icon bg-warning">
+                                    <i class="zmdi zmdi-settings"></i>
+                                </div>
+                                <div class="user-desc">
+                                    <span class="name">Settings</span>
+                                    <span class="desc">There are new settings available</span>
+                                    <span class="time">1 day ago</span>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- /Right-bar -->
+
+        </div>
+        <!-- END wrapper -->
+
+        <div id="log_out" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">登出</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>您确定登出么？</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-info waves-effect waves-light" id="logout">确认登出</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src="{% static 'teamanagement/js/jquery.min.js' %}"></script>
+        <script src="{% static 'teamanagement/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'teamanagement/js/detect.js' %}"></script>
+        <script src="{% static 'teamanagement/js/fastclick.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.blockUI.js' %}"></script>
+        <script src="{% static 'teamanagement/js/waves.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.nicescroll.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.slimscroll.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.scrollTo.min.js' %}"></script>
+
+
+        <!-- Plugins Js -->
+        <script src="{% static 'teamanagement/plugins/moment/moment.js' %}"></script>
+     	<script src="{% static 'teamanagement/plugins/timepicker/bootstrap-timepicker.min.js' %}"></script>
+     	<script src="{% static 'teamanagement/plugins/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js' %}"></script>
+        <script src="{% static 'teamanagement/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+     	<script src="{% static 'teamanagement/plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+        <!-- Editable js -->
+	    <script src="{% static 'teamanagement/plugins/magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+	    <script src="{% static 'teamanagement/plugins/jquery-datatables-editable/jquery.dataTables.js' %}"></script>
+	    <script src="{% static 'teamanagement/plugins/datatables/dataTables.bootstrap.js' %}"></script>
+	    <script src="{% static 'teamanagement/plugins/tiny-editable/mindmup-editabletable.js' %}"></script>
+	    <script src="{% static 'teamanagement/plugins/tiny-editable/numeric-input-example.js' %}"></script>
+		<!-- init -->
+	    <script src="{% static 'teamanagement/pages/datatables.editable.init.js' %}"></script>
+
+        <!-- Sweet Alert js -->
+        <script src="{% static 'teamanagement/plugins/bootstrap-sweetalert/sweet-alert.min.js' %}"></script>
+        <script src="{% static 'teamanagement/pages/jquery.sweet-alert.init.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static 'teamanagement/js/jquery.core.js' %}"></script>
+        <script src="{% static 'teamanagement/js/jquery.app.js' %}"></script>
+
+        <script>
+            Date.prototype.Format = function(fmt)
+            {
+              var o = {
+                "M+" : this.getMonth()+1,                 //月份
+                "d+" : this.getDate(),                    //日
+                "h+" : this.getHours(),                   //小时
+                "m+" : this.getMinutes(),                 //分
+                "s+" : this.getSeconds(),                 //秒
+                "q+" : Math.floor((this.getMonth()+3)/3), //季度
+                "S"  : this.getMilliseconds()             //毫秒
+              };
+              if(/(y+)/.test(fmt))
+                fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+              for(var k in o)
+                if(new RegExp("("+ k +")").test(fmt))
+              fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+              return fmt;
+            }
+
+            jQuery(document).ready(function() {
+
+                //登出
+                $('#logout').click(function () {
+                    $.ajax({
+                       type:"POST",
+                       url:"/tea/logout",
+                       data:{},//传递数组
+                       success:function (data) {
+                           window.location.href = '/tea';
+                       },
+                        error:function (data) {
+                            swal({
+                                    title: "Wrong!",
+                                    text: "出错啦!",
+                                    type: "error",
+                                    showCancelButton: false,
+                                    confirmButtonClass: 'btn-danger waves-effect waves-light',
+                                    confirmButtonText: '返回!'
+                            });
+                           }
+                       });
+                });
+
+                var day = new Date();
+                //alert(today);
+                $("#today").val(day.Format("yyyy/MM/dd"));
+
+                jQuery('#datepicker-autoclose').datepicker({
+                    autoclose: true,
+                    todayHighlight: true,
+                    format:'yyyy/mm/dd'
+                });
+
+
+                $('#purcahse_submit').click(function () {
+                    var msg={};
+
+                    msg['staff_name']=$("#staff_name").find("option:selected").text();
+                    msg["merchant_name"] = $("#merchant_name").val();
+                    msg["merchant_phone"] = $("#merchant_phone").val();
+                    msg["today"] = $("#today").val();
+                    msg["estimated_time"] = $("#datepicker-autoclose").val();
+
+                    // 正则表达式匹配数字
+                    var reg = /^[\d]+$/;
+                    //console.log(msg.staff_name+msg.merchant_phone,msg.datepicker_autoclose,msg.datepicker_autoclose);
+
+                    // 表格数据
+                    var table_data = [];
+
+                    $('#datatable-editable tbody tr').each(function() {
+                        //var id=$(this).find("td").eq(0).text(); // 第一列
+                        var commodity_name=$(this).find("td").eq(0).text(); // 第二列
+                        var commodity_specification=$(this).find("td").eq(1).text(); // 第三列
+                        var commodity_num=$(this).find("td").eq(2).text(); // 第四列
+                        var commodity_price=$(this).find("td").eq(3).text(); // 第四列
+
+                        if(commodity_name != '' && commodity_specification != '' && commodity_num != '' && commodity_price != ''){
+                            data = [commodity_name,commodity_specification,commodity_num,commodity_price];
+                            table_data.push(data);
+                        }else{
+                            swal({
+                                title: "Sorry!",
+                                text: "您的采购单信息没有填写完全，请填写完整！",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-warning waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                            });
+                        }
+
+
+                    });
+                    // console.log(table_data);
+
+
+                    if(msg.staff_name == '选择员工姓名'){
+                        swal({
+                                title: "Sorry!",
+                                text: "抱歉，您没有输入采购员的姓名，请选择！",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-warning waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                            });
+                    }else if(msg.merchant_name == null){
+                        swal({
+                                title: "Sorry!",
+                                text: "抱歉，您没有输入商家名称，请输入！",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-warning waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                            });
+                    }else if(msg.merchant_phone == null){
+                        swal({
+                                title: "Sorry!",
+                                text: "抱歉，您没有输入商家联系人电话，请输入！",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-warning waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                            });
+                    }else if(!reg.test(msg.merchant_phone)){
+                        swal({
+                                title: "Sorry!",
+                                text: "抱歉，您输入商家联系人电话有误，请输入！",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-warning waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                            });
+                    }else if(msg.estimated_time == null){
+                        swal({
+                                title: "Sorry!",
+                                text: "抱歉，您没有输入预期到货时间，请输入！",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-warning waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                            });
+                    }else if(msg.estimated_time < msg.today){
+                        swal({
+                                title: "Sorry!",
+                                text: "抱歉，您设置的预期到货时间有误，请重新输入！",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-warning waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                            });
+                    }else if(table_data[0][0] == 'No data available in table'){
+                        swal({
+                                title: "Sorry!",
+                                text: "抱歉，您没有输入采购的物品，请添加需要采购的物品！",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: 'btn-warning waves-effect waves-light',
+                                confirmButtonText: '返回!'
+                            });
+                    } else{
+
+                        $.ajax({
+                           type:"POST",
+                           url:"/tea/purchase_input",
+                           data:{"purchase_data":JSON.stringify(msg),
+                               'table_data':JSON.stringify({'data':table_data})},//传递数组
+                           success:function (data) {
+                               data = JSON.parse(data);
+                               //alert(data['result']);
+                               // 这是一个alert
+                               swal({
+                                   title: "Success!",
+                                   type: "success",
+                                   text: data['result'],
+                                   confirmButtonClass: 'btn-success waves-effect waves-light',
+                                   confirmButtonText: '完成!'
+                                });
+
+                           },
+                            error:function (data) {
+                                swal({
+                                        title: "Wrong!",
+                                        text: "出错啦!",
+                                        type: "error",
+                                        showCancelButton: false,
+                                        confirmButtonClass: 'btn-danger waves-effect waves-light',
+                                        confirmButtonText: '返回!'
+                                });
+                               }
+                       });
+
+                    }
+
+                });
+
+            });
+
+
+        </script>
+
+    </body>
+</html>
