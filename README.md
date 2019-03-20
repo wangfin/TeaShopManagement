@@ -130,3 +130,15 @@ django的urls、views、models、template、static file基本上都是按照了�
 
 本来想做各种可视化图表、还想做数据的预测之类的，但都没有实现。
 
+### Django的MySQL驱动问题
+
+这里补充下django的MySQL驱动的安装。django的MySQL驱动默认是mysqldb，但是好像经常会有问题，所以安装pymysql。
+
+'''
+pip install pymysql
+
+在TeaShopManagement/init.py中添加
+import pymysql
+pymysql.install_as_MySQLdb()
+'''
+
